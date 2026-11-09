@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#3A0A15" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>NAIVEDYA · Wine Shop POS</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23C9A227' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M7 3h10c0 4.4-1.9 7.5-5 7.5S7 7.4 7 3Z'/%3E%3Cpath d='M12 10.5V19'/%3E%3Cpath d='M8 21h8'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- TOAST -->
+  <div id="toast" role="status" aria-live="polite"><span id="toastIcon">✅</span><span id="toastMsg">Welcome</span></div>
+
+  <!-- ================= LANDING ================= -->
+  <div id="screen-landing" class="screen">
+    <div class="hero">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M7 3h10c0 4.4-1.9 7.5-5 7.5S7 7.4 7 3Z"/>
+          <path d="M8.6 5.2h6.8c-.3 2.4-1.6 4.3-3.4 4.3s-3.1-1.9-3.4-4.3Z" fill="currentColor" stroke="none" opacity="0.45"/>
+          <path d="M12 10.5V19"/><path d="M8 21h8"/>
+        </svg>
+      </div>
+      <p class="hero-eyebrow">Wine Shop Management Suite</p>
+      <h1 class="hero-title">NAIVEDYA</h1>
+      <p class="hero-tagline">Stock, sales &amp; profit — beautifully organised.</p>
+    </div>
+
+    <main class="entry-wrap">
+      <div class="entry-card" onclick="nav('login')" role="button" tabindex="0" onkeydown="if(event.key==='Enter')nav('login')">
+        <div class="entry-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg>
+        </div>
+        <div class="entry-text">
+          <h2>Admin Dashboard</h2>
+          <p>Manage products, stock &amp; profit reports</p>
+        </div>
+        <span class="entry-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+      </div>
+
+      <div class="entry-card" onclick="nav('retail')" role="button" tabindex="0" onkeydown="if(event.key==='Enter')nav('retail')">
+        <div class="entry-icon gold">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8V6.5A2.5 2.5 0 0 1 6.5 4H8"/><path d="M16 4h1.5A2.5 2.5 0 0 1 20 6.5V8"/><path d="M20 16v1.5a2.5 2.5 0 0 1-2.5 2.5H16"/><path d="M8 20H6.5A2.5 2.5 0 0 1 4 17.5V16"/><path d="M4 12h16"/></svg>
+        </div>
+        <div class="entry-text">
+          <h2>Retail Counter</h2>
+          <p>Sell, browse catalogue &amp; handle returns</p>
+        </div>
+        <span class="entry-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+      </div>
+    </main>
+
+    <footer class="landing-foot">Secure&nbsp;·&nbsp;Fast&nbsp;·&nbsp;Made for wine &amp; liquor retail</footer>
+  </div>
+
+  <!-- ================= LOGIN ================= -->
+  <div id="screen-login" class="screen hidden">
+    <header class="app-header">
+      <button class="header-btn icon-only" onclick="nav('landing')" aria-label="Back to home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg>
+      </button>
+      <h1>Admin Login</h1>
+      <span class="header-spacer"></span>
+    </header>
+    <main class="container narrow">
+      <div class="card login-card">
+        <div class="login-brand" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M7 3h10c0 4.4-1.9 7.5-5 7.5S7 7.4 7 3Z"/><path d="M12 10.5V19"/><path d="M8 21h8"/>
+          </svg>
+        </div>
+        <h2 class="login-title">Welcome back</h2>
+        <p class="login-sub">Sign in to manage your shop</p>
+
+        <label for="loginEmail">Email</label>
+        <input type="email" id="loginEmail" value="admin@shop.com" autocomplete="username" />
+        <label for="loginPassword">Password</label>
+        <div class="pw-wrap">
+          <input type="password" id="loginPassword" value="admin123" autocomplete="current-password" class="no-mb" />
+          <button type="button" class="pw-toggle" onclick="togglePassword()" aria-label="Show password">
+            <svg id="pwEyeOpen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z"/><circle cx="12" cy="12" r="3"/></svg>
+            <svg id="pwEyeClosed" class="hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.7 6.1c.4-.06.86-.1 1.3-.1 6 0 9.5 6 9.5 6a17.6 17.6 0 0 1-2.3 3.1"/><path d="M6.6 6.9A16.3 16.3 0 0 0 2.5 12S6 18 12 18a9.9 9.9 0 0 0 4.3-1"/><path d="m3 3 18 18"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg>
+          </button>
+        </div>
+        <button class="btn" id="loginBtn" onclick="handleLogin()">Sign In</button>
+      </div>
+    </main>
+  </div>
+
+  <!-- ================= ADMIN ================= -->
+  <div id="screen-admin" class="screen hidden">
+    <header class="app-header">
+      <div class="header-brand">
+        <span class="header-glass" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h10c0 4.4-1.9 7.5-5 7.5S7 7.4 7 3Z"/><path d="M12 10.5V19"/><path d="M8 21h8"/></svg></span>
+        <h1>Dashboard</h1>
+      </div>
+      <button class="header-btn" onclick="handleLogout()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h4.5A1.5 1.5 0 0 1 20 5.5v13a1.5 1.5 0 0 1-1.5 1.5H14"/><path d="m9 8-4 4 4 4"/><path d="M5 12h11"/></svg>
+        <span>Logout</span>
+      </button>
+    </header>
+
+    <main class="container">
+      <div class="stats-row">
+        <div class="stat-card"><div class="stat-value" id="statProducts">–</div><div class="stat-label">Products</div></div>
+        <div class="stat-card"><div class="stat-value" id="statStockValue">–</div><div class="stat-label">Stock Value</div></div>
+        <div class="stat-card"><div class="stat-value warn" id="statLowStock">–</div><div class="stat-label">Low Stock</div></div>
+      </div>
+
+      <button class="btn btn-gold report-cta" onclick="openDayReport()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20v-6"/><path d="M12 20V4"/><path d="M19 20V10"/></svg>
+        Total Report — Day Wise
+      </button>
+
+      <div class="card">
+        <h3 class="card-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+          Add New Product
+        </h3>
+        <label for="pCategory">Category</label>
+        <select id="pCategory">
+          <option value="Whisky">Whisky</option>
+          <option value="Rum">Rum</option>
+          <option value="Brandy">Brandy</option>
+          <option value="Vodka & Gin">Vodka &amp; Gin</option>
+          <option value="Beer">Beer</option>
+          <option value="Wine & RTD">Wine &amp; RTD</option>
+        </select>
+
+        <label for="pName">Product Name</label>
+        <input type="text" id="pName" placeholder="e.g. Old Monk 7yo (750ml)" autocomplete="off" />
+
+        <label for="pBarcode">Barcode <span class="label-hint">(optional — scan or leave empty)</span></label>
+        <div class="row-flex">
+          <input type="text" id="pBarcode" placeholder="Scan or type later" autocomplete="off" class="no-mb" />
+          <button class="icon-btn" onclick="startAdminScanner('pBarcode')" aria-label="Scan barcode with camera">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8.5h2.6L8.4 6h7.2l1.8 2.5H20a1 1 0 0 1 1 1V19a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5a1 1 0 0 1 1-1Z"/><circle cx="12" cy="13.8" r="3.4"/></svg>
+          </button>
+        </div>
+
+        <div class="row-2col">
+          <div><label for="pCost">Cost Price (₹)</label><input type="number" inputmode="decimal" id="pCost" placeholder="e.g. 90" /></div>
+          <div><label for="pPrice">Selling Price (₹)</label><input type="number" inputmode="decimal" id="pPrice" placeholder="e.g. 100" /></div>
+        </div>
+
+        <label for="pStock">Initial Stock</label>
+        <input type="number" inputmode="numeric" id="pStock" placeholder="e.g. 20" value="0" />
+        <button class="btn" id="addProductBtn" onclick="addProduct()">Save Product</button>
+      </div>
+
+      <div class="flex-between section-head">
+        <h3 class="section-title">Catalogue</h3>
+        <span class="badge" id="totalProducts">0 Items</span>
+      </div>
+
+      <div class="category-tabs" id="categoryTabs"></div>
+      <div id="productList" class="product-list"></div>
+    </main>
+
+    <nav class="bottom">
+      <button class="active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg>
+        <span>Dashboard</span>
+      </button>
+      <button onclick="nav('retail')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8V6.5A2.5 2.5 0 0 1 6.5 4H8"/><path d="M16 4h1.5A2.5 2.5 0 0 1 20 6.5V8"/><path d="M20 16v1.5a2.5 2.5 0 0 1-2.5 2.5H16"/><path d="M8 20H6.5A2.5 2.5 0 0 1 4 17.5V16"/><path d="M4 12h16"/></svg>
+        <span>Retail</span>
+      </button>
+      <button onclick="nav('reports')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20v-6"/><path d="M12 20V4"/><path d="M19 20V10"/></svg>
+        <span>Reports</span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- ================= RETAIL ================= -->
+  <div id="screen-retail" class="screen hidden">
+    <header class="app-header">
+      <button class="header-btn icon-only" onclick="nav('landing')" aria-label="Back to home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg>
+      </button>
+      <h1>Retail Counter</h1>
+      <span class="header-spacer"></span>
+    </header>
+
+    <main class="container">
+      <!-- ---------- RETAIL TAB 1 : SALE ---------- -->
+      <div id="retailView-sale">
+        <div class="card">
+          <h3 class="card-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8V6.5A2.5 2.5 0 0 1 6.5 4H8"/><path d="M16 4h1.5A2.5 2.5 0 0 1 20 6.5V8"/><path d="M20 16v1.5a2.5 2.5 0 0 1-2.5 2.5H16"/><path d="M8 20H6.5A2.5 2.5 0 0 1 4 17.5V16"/><path d="M4 12h16"/></svg>
+            New Sale
+          </h3>
+
+          <label for="scanBarcode">Scan / Enter Barcode</label>
+          <div class="row-flex">
+            <input type="text" id="scanBarcode" placeholder="Type barcode…" autocomplete="off" class="no-mb" oninput="searchBarcode()" />
+            <button class="icon-btn gold" onclick="startCameraScan()" aria-label="Open camera scanner">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8.5h2.6L8.4 6h7.2l1.8 2.5H20a1 1 0 0 1 1 1V19a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5a1 1 0 0 1 1-1Z"/><circle cx="12" cy="13.8" r="3.4"/></svg>
+            </button>
+          </div>
+
+          <label for="searchName">Or Search by Name</label>
+          <div class="search-wrapper">
+            <span class="search-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-3.8-3.8"/></svg></span>
+            <input type="text" id="searchName" placeholder="Type product name…" autocomplete="off" class="no-mb" oninput="searchByName()" />
+            <button class="clear-btn" onclick="clearSearchName()" aria-label="Clear search">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+            </button>
+          </div>
+
+          <div id="scanResults" class="scan-results hidden"></div>
+
+          <div id="scannerBox" class="scanner-box hidden">
+            <div class="scan-frame"><video id="scanner-video" playsinline muted></video></div>
+            <button class="btn btn-danger-solid" onclick="stopCameraScan()">Cancel Scanner</button>
+          </div>
+        </div>
+
+        <div id="productInfo" class="card product-pick hidden">
+          <h3 id="rName" class="pick-name"></h3>
+          <p id="rCat" class="pick-meta"></p>
+          <div class="row-2col">
+            <div><label for="rQty">Quantity</label><input type="number" id="rQty" value="1" min="1" inputmode="numeric" class="no-mb" /></div>
+            <div><label for="rOverridePrice">Price Override (₹)</label><input type="number" inputmode="decimal" id="rOverridePrice" placeholder="Original" class="no-mb" /></div>
+          </div>
+          <button class="btn" onclick="addToCart()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+            Add to Cart
+          </button>
+        </div>
+
+        <div class="flex-between section-head">
+          <h3 class="section-title">Cart <span class="cart-count" id="cartCount">Empty</span></h3>
+          <button class="text-btn danger" onclick="clearCart()">Clear all</button>
+        </div>
+        <div class="card list-card" id="cartList"></div>
+
+        <div class="total-bar">
+          <span>Total</span>
+          <strong id="cartTotal">₹0.00</strong>
+        </div>
+        <button class="btn btn-gold checkout-btn" id="checkoutBtn" onclick="checkout()">Complete Sale</button>
+      </div>
+
+      <!-- ---------- RETAIL TAB 2 : PRODUCTS (view-only) ---------- -->
+      <div id="retailView-products" class="hidden">
+        <div class="card">
+          <h3 class="card-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg>
+            Product Catalogue
+          </h3>
+          <p class="card-hint">All shop products with live stock. Tap any product for full details — <b>view only</b>, changes are made from the Admin side.</p>
+          <div class="search-wrapper">
+            <span class="search-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-3.8-3.8"/></svg></span>
+            <input type="text" id="retCatalogSearch" placeholder="Search name or barcode…" autocomplete="off" class="no-mb" oninput="renderRetailCatalog()" />
+            <button class="clear-btn" onclick="clearRetailCatalogSearch()" aria-label="Clear search">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="category-tabs" id="retailCatTabs"></div>
+        <div class="flex-between section-head">
+          <h3 class="section-title">All Products</h3>
+          <span class="badge" id="retailCatalogCount">0 Items</span>
+        </div>
+        <div id="retailCatalogList" class="product-list"></div>
+      </div>
+
+      <!-- ---------- RETAIL TAB 3 : RETURNS ---------- -->
+      <div id="retailView-returns" class="hidden">
+        <div class="mode-toggle">
+          <button id="modeSaleBtn" class="active" onclick="setReturnMode('sale')">From a Sale</button>
+          <button id="modeProductBtn" onclick="setReturnMode('product')">Without Receipt</button>
+        </div>
+
+        <div id="returnBySale">
+          <div class="card">
+            <h3 class="card-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>
+              Return from a Sale
+            </h3>
+            <p class="card-hint">Pick the customer's sale, then type how many of each item came back. Stock goes back up and the refund is recorded — automatically.</p>
+          </div>
+          <div class="card list-card" id="recentSalesList"></div>
+        </div>
+
+        <div id="returnByProduct" class="hidden">
+          <div class="card">
+            <h3 class="card-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>
+              Return without Receipt
+            </h3>
+            <p class="card-hint">For old bills — search the product, enter the quantity and the refund amount you gave back.</p>
+            <label for="retReturnSearch">Search Product</label>
+            <div class="search-wrapper">
+              <span class="search-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-3.8-3.8"/></svg></span>
+              <input type="text" id="retReturnSearch" placeholder="Product name or barcode…" autocomplete="off" class="no-mb" oninput="retSearchReturnProduct()" />
+              <button class="clear-btn" onclick="clearReturnSearch()" aria-label="Clear search">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+              </button>
+            </div>
+            <div id="retReturnResults" class="scan-results hidden"></div>
+          </div>
+
+          <div id="noReceiptForm" class="card hidden">
+            <h3 id="nrName" class="pick-name"></h3>
+            <p id="nrMeta" class="pick-meta"></p>
+            <div class="row-2col">
+              <div><label for="nrQty">Return Qty</label><input type="number" id="nrQty" value="1" min="1" inputmode="numeric" class="no-mb" oninput="updateNoReceiptTotal()" /></div>
+              <div><label for="nrRefund">Refund / Unit (₹)</label><input type="number" inputmode="decimal" id="nrRefund" class="no-mb" oninput="updateNoReceiptTotal()" /></div>
+            </div>
+            <div class="refund-bar"><span>Refund Total</span><b id="nrTotal">₹0.00</b></div>
+            <button class="btn btn-danger-solid" id="nrConfirmBtn" onclick="processNoReceiptReturn()">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>
+              Return &amp; Restock
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <nav class="bottom">
+      <button id="rtab-sale" class="active" onclick="retailTab('sale')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8V6.5A2.5 2.5 0 0 1 6.5 4H8"/><path d="M16 4h1.5A2.5 2.5 0 0 1 20 6.5V8"/><path d="M20 16v1.5a2.5 2.5 0 0 1-2.5 2.5H16"/><path d="M8 20H6.5A2.5 2.5 0 0 1 4 17.5V16"/><path d="M4 12h16"/></svg>
+        <span>Sale</span>
+      </button>
+      <button id="rtab-products" onclick="retailTab('products')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg>
+        <span>Products</span>
+      </button>
+      <button id="rtab-returns" onclick="retailTab('returns')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>
+        <span>Returns</span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- ================= REPORTS ================= -->
+  <div id="screen-reports" class="screen hidden">
+    <header class="app-header">
+      <button class="header-btn icon-only" onclick="nav('landing')" aria-label="Back to home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg>
+      </button>
+      <h1>Reports</h1>
+      <span class="header-spacer"></span>
+    </header>
+
+    <main class="container">
+      <div class="profit-hero">
+        <div class="hero-glow" aria-hidden="true"></div>
+        <p class="hero-label">Net Profit</p>
+        <div class="hero-value" id="repProfit">₹0.00</div>
+        <p class="hero-note">All-time earnings after product cost &amp; returns</p>
+      </div>
+
+      <button class="btn btn-gold report-cta" onclick="openDayReport()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20v-6"/><path d="M12 20V4"/><path d="M19 20V10"/></svg>
+        Total Report — Day Wise
+      </button>
+
+      <div class="stats-row">
+        <div class="stat-card"><div class="stat-value" id="repRev">₹0</div><div class="stat-label">Net Collected</div></div>
+        <div class="stat-card"><div class="stat-value" id="repCount">0</div><div class="stat-label">Sales</div></div>
+        <div class="stat-card"><div class="stat-value" id="repAvg">₹0</div><div class="stat-label">Avg Sale</div></div>
+      </div>
+      <p class="rep-note" id="repNote">Gross sales — · Returns —</p>
+
+      <div class="section-head"><h3 class="section-title">Recent Sales</h3></div>
+      <div class="card list-card" id="txnList"></div>
+
+      <div class="section-head"><h3 class="section-title">Recent Returns</h3></div>
+      <div class="card list-card" id="returnTxnList"></div>
+    </main>
+
+    <nav class="bottom">
+      <button onclick="nav('admin')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg>
+        <span>Dashboard</span>
+      </button>
+      <button onclick="nav('retail')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8V6.5A2.5 2.5 0 0 1 6.5 4H8"/><path d="M16 4h1.5A2.5 2.5 0 0 1 20 6.5V8"/><path d="M20 16v1.5a2.5 2.5 0 0 1-2.5 2.5H16"/><path d="M8 20H6.5A2.5 2.5 0 0 1 4 17.5V16"/><path d="M4 12h16"/></svg>
+        <span>Retail</span>
+      </button>
+      <button class="active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20v-6"/><path d="M12 20V4"/><path d="M19 20V10"/></svg>
+        <span>Reports</span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- ================= EDIT MODAL ================= -->
+  <div id="editModal" class="modal-overlay hidden" onclick="closeEditModal(event)">
+    <div class="sheet" onclick="event.stopPropagation()" role="dialog" aria-modal="true" aria-label="Edit product">
+      <div class="sheet-handle" aria-hidden="true"></div>
+      <div class="flex-between sheet-head">
+        <h3>Edit Product</h3>
+        <button class="close-btn" onclick="closeEditModal()" aria-label="Close">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        </button>
+      </div>
+
+      <input type="hidden" id="editId" />
+
+      <label for="editCategory">Category</label>
+      <select id="editCategory">
+        <option value="Whisky">Whisky</option>
+        <option value="Rum">Rum</option>
+        <option value="Brandy">Brandy</option>
+        <option value="Vodka & Gin">Vodka &amp; Gin</option>
+        <option value="Beer">Beer</option>
+        <option value="Wine & RTD">Wine &amp; RTD</option>
+      </select>
+
+      <label for="editName">Product Name</label>
+      <input type="text" id="editName" autocomplete="off" />
+
+      <label for="editBarcode">Barcode <span class="label-hint">(scan or type)</span></label>
+      <div class="row-flex">
+        <input type="text" id="editBarcode" placeholder="NO-BARCODE" autocomplete="off" class="no-mb" />
+        <button class="icon-btn" onclick="startAdminScanner('editBarcode')" aria-label="Scan barcode with camera">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8.5h2.6L8.4 6h7.2l1.8 2.5H20a1 1 0 0 1 1 1V19a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5a1 1 0 0 1 1-1Z"/><circle cx="12" cy="13.8" r="3.4"/></svg>
+        </button>
+      </div>
+
+      <div id="adminScannerBox" class="scanner-box hidden">
+        <div class="scan-frame"><video id="admin-scanner-video" playsinline muted></video></div>
+        <button class="btn btn-danger-solid" onclick="stopAdminScanner()">Cancel Scanner</button>
+      </div>
+
+      <div class="row-2col">
+        <div><label for="editCost">Cost Price (₹)</label><input type="number" inputmode="decimal" id="editCost" class="no-mb" /></div>
+        <div><label for="editPrice">Selling Price (₹)</label><input type="number" inputmode="decimal" id="editPrice" class="no-mb" /></div>
+      </div>
+
+      <label for="editStock">Stock</label>
+      <input type="number" inputmode="numeric" id="editStock" />
+
+      <button class="btn" id="saveProductBtn" onclick="saveProductUpdate()">Save Changes</button>
+      <button class="btn btn-danger-ghost" onclick="deleteProduct(document.getElementById('editId').value)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16"/><path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/><path d="m6.5 7 .8 12a1.5 1.5 0 0 0 1.5 1.4h6.4a1.5 1.5 0 0 0 1.5-1.4l.8-12"/><path d="M10 11v6M14 11v6"/></svg>
+        Delete Product
+      </button>
+      <div class="sheet-pad"></div>
+    </div>
+  </div>
+
+  <!-- ================= VIEW PRODUCT MODAL (retail, read-only) ================= -->
+  <div id="viewModal" class="modal-overlay hidden" onclick="closeViewModal(event)">
+    <div class="sheet" onclick="event.stopPropagation()" role="dialog" aria-modal="true" aria-label="Product details">
+      <div class="sheet-handle" aria-hidden="true"></div>
+      <div class="flex-between sheet-head">
+        <h3 id="vName">Product</h3>
+        <button class="close-btn" onclick="closeViewModal()" aria-label="Close">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        </button>
+      </div>
+      <p id="vMeta" class="pick-meta" style="margin-top:-10px;"></p>
+
+      <div class="detail-grid">
+        <div class="detail-tile"><span>Selling Price</span><b id="vPrice">–</b></div>
+        <div class="detail-tile"><span>Stock Left</span><b id="vStock">–</b></div>
+        <div class="detail-tile"><span>Cost Price</span><b id="vCost">–</b></div>
+        <div class="detail-tile"><span>Profit / Unit</span><b id="vProfit">–</b></div>
+        <div class="detail-tile wide"><span>Barcode</span><b id="vBarcode">–</b></div>
+      </div>
+
+      <input type="hidden" id="viewId" />
+      <button class="btn" id="vAddBtn" onclick="addViewToSale()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+        Add to Sale
+      </button>
+      <p class="dr-note" style="text-align:center;">View only — product changes are made from the Admin dashboard.</p>
+      <div class="sheet-pad"></div>
+    </div>
+  </div>
+
+  <!-- ================= RETURN FROM SALE MODAL ================= -->
+  <div id="returnSaleModal" class="modal-overlay hidden" onclick="closeReturnSaleModal(event)">
+    <div class="sheet" onclick="event.stopPropagation()" role="dialog" aria-modal="true" aria-label="Return items from a sale">
+      <div class="sheet-handle" aria-hidden="true"></div>
+      <div class="flex-between sheet-head">
+        <div>
+          <h3>Process Return</h3>
+          <p class="card-hint" id="rsMeta" style="margin:4px 0 0;"></p>
+        </div>
+        <button class="close-btn" onclick="closeReturnSaleModal()" aria-label="Close">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        </button>
+      </div>
+
+      <p class="card-hint">Type how many units the customer returned for each item:</p>
+      <div id="rsLines" class="return-lines"></div>
+
+      <div class="refund-bar"><span>Refund Total</span><b id="rsTotal">₹0.00</b></div>
+      <button class="btn btn-danger-solid" id="rsConfirmBtn" onclick="processSaleReturn()" disabled>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>
+        Return &amp; Restock
+      </button>
+      <p class="dr-note" style="text-align:center;">Returned stock goes back to inventory automatically.</p>
+      <div class="sheet-pad"></div>
+    </div>
+  </div>
+
+  <!-- ================= DAY TOTAL REPORT MODAL ================= -->
+  <div id="reportModal" class="modal-overlay hidden" onclick="closeDayReport(event)">
+    <div class="sheet" onclick="event.stopPropagation()" role="dialog" aria-modal="true" aria-label="Day total report">
+      <div class="sheet-handle" aria-hidden="true"></div>
+      <div class="flex-between sheet-head">
+        <h3>Total Report</h3>
+        <button class="close-btn" onclick="closeDayReport()" aria-label="Close">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        </button>
+      </div>
+
+      <div class="day-nav">
+        <button onclick="changeDay(-1)" aria-label="Previous day">‹</button>
+        <input type="date" id="reportDate" onchange="onReportDateChange()" />
+        <button id="nextDayBtn" onclick="changeDay(1)" aria-label="Next day">›</button>
+      </div>
+
+      <div class="report-grid">
+        <div class="rg-tile collected"><b id="drCollected">₹0</b><span>Collected</span></div>
+        <div class="rg-tile"><b id="drGross">₹0</b><span>Gross Sales</span></div>
+        <div class="rg-tile bad"><b id="drReturns">₹0</b><span>Returns</span></div>
+        <div class="rg-tile"><b id="drCount">0</b><span>Sales</span></div>
+        <div class="rg-tile"><b id="drUnits">0</b><span>Units Sold</span></div>
+        <div class="rg-tile good"><b id="drProfit">₹0</b><span>Net Profit</span></div>
+      </div>
+
+      <h4 class="dr-sub">Product-wise — Sold &amp; Stock Left</h4>
+      <div class="report-table-wrap">
+        <table class="report-table">
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th class="num">Sold</th>
+              <th class="num">Ret.</th>
+              <th class="num">Stock</th>
+              <th class="num">Amount</th>
+              <th class="num">Profit</th>
+            </tr>
+          </thead>
+          <tbody id="drTableBody"></tbody>
+        </table>
+      </div>
+      <p class="dr-note">Stock = live stock in shop right now · Collected = gross − returns.</p>
+
+      <h4 class="dr-sub">Returns This Day</h4>
+      <div class="card list-card" id="drReturnsList" style="box-shadow:none;"></div>
+      <div class="sheet-pad"></div>
+    </div>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
